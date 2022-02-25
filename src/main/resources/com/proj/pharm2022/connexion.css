@@ -1,0 +1,12 @@
+.anchor {
+    -fx-background-image:url('pharma.jpeg');
+    -fx-background-size:cover;
+}
+.label{
+    -fx-font-family: Baghdad;
+}
+
+
+
+
+

@@ -1,0 +1,8 @@
+.anchor{
+    -fx-background-image:url('green.jpeg');
+    -fx-background-size: cover;
+}
+.button:hover{
+    -fx-background-color: rgba(119, 238, 110, 0.38);
+    -fx-border-radius: 20;
+}
