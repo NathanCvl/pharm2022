@@ -304,7 +304,6 @@ public void imprimerListeMed(ActionEvent event) throws SQLException {
         obListeMedicament.clear();
         String url2 = "jdbc:mysql://localhost:3306/java";
         Connection con;
-
             con = DriverManager.getConnection(url2, "root", "nathancvl");
             String requeteClient = "select * from Client";
             String requeteMedicament = "select * from medicament";
