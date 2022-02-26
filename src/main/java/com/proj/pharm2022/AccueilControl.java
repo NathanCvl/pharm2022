@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.File;
 import java.net.URL;
@@ -23,6 +24,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AccueilControl implements Initializable {
+
+    @FXML TabPane medicamentParametre1;
     @FXML private Button supprimer1;
     @FXML
     private Button supprimer;
@@ -90,6 +93,8 @@ public class AccueilControl implements Initializable {
     @FXML
     Button rafraichir;
     @FXML
+    private ComboBox comboBox;
+    @FXML
     private TabPane clientParametre;
     @FXML
     private TabPane medicamentParametre;
@@ -145,7 +150,7 @@ public class AccueilControl implements Initializable {
         selectionModel.select(ajouterClient);
 
     }
-    public void getinfoMedicament(ActionEvent event){
+    public void getinfoMedicament(SortEvent<TableView> event){
         Medicament medicament = tableMedicament.getSelectionModel().getSelectedItem();
         SingleSelectionModel<Tab> selectionModel = medicamentParametre.getSelectionModel();
         selectionModel.select(modifierMedicamentTab);
@@ -201,6 +206,10 @@ public class AccueilControl implements Initializable {
                 client.modifierClientBDD();
         }
 
+
+    }
+    public void afficherBox(ActionEvent event){
+        System.out.println(comboBox.getEditor().getText());
 
     }
     public void modifierMedicament(ActionEvent event) throws SQLException {

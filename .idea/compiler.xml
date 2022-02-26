@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="pharm2022" options="--add-exports javafx.graphics/com.sun.javafx.stage=com.proj.pharm" />
+      <module name="pharm2022" options="" />
     </option>
   </component>
 </project>

@@ -11,6 +11,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mysql-connector-java-8.0.28" level="project" />
+    <orderEntry type="library" name="jfoenix-9.0.10" level="project" />
+    <orderEntry type="library" name="Maven: com.jfoenix:jfoenix:9.0.10" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:17.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:mac:17.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:17.0.2" level="project" />
@@ -30,10 +32,17 @@
     <orderEntry type="library" name="Maven: org.apache.pdfbox:fontbox:2.0.24" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.5.13.2" level="project" />
-    <orderEntry type="library" name="Maven: dom4j:dom4j:1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:mac:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:17.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:mac:17.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-javafx:12.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-core:12.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-unicons-pack:12.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.kordamp.ikonli:ikonli-swing:12.3.0" level="project" />
+    <orderEntry type="library" name="Maven: com.xnx3.swing:xnx3-swing:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.java.net.substance:substance:5.3" level="project" />
+    <orderEntry type="library" name="Maven: dom4j:dom4j:1.6.1" level="project" />
+    <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.0.b2" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:17.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:mac:17.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:17.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:mac:17.0.2" level="project" />
   </component>
 </module>

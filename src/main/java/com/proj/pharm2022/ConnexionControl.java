@@ -1,5 +1,6 @@
 package com.proj.pharm2022;
 
+import org.kordamp.ikonli.Ikon;
 import com.proj.pharm2022.personne.Compte;
 import com.proj.pharm2022.personne.ListeCompte;
 import javafx.event.ActionEvent;
@@ -26,18 +27,15 @@ public class ConnexionControl {
     private Button btn2;
     String identifiant;
     String password;
-
-    @FXML
     public void connexion(ActionEvent event) throws IOException, SQLException, InterruptedException {
         Stage stage;
         Parent root;
-
         if(event.getSource()==btn1) {
             identifiant=id.getText();
             password=mdp.getText();
             if ( verifCompteBDD() ) {
                 stage = (Stage) btn1.getScene().getWindow();
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Accueil.fxml")));
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/Accueil.fxml")));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.centerOnScreen();
@@ -48,7 +46,7 @@ public class ConnexionControl {
         }
         else {
             stage = (Stage) btn2.getScene().getWindow();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Inscription.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/Inscription.fxml")));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
