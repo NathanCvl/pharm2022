@@ -7,7 +7,7 @@ module com.proj.pharm {
     requires mysql.connector.java;
     requires itextpdf;
     requires javafx.web;
-    requires org.kordamp.ikonli.core;
+    requires java.desktop;
 
     opens com.proj.pharm2022 to javafx.fxml;
     exports com.proj.pharm2022;

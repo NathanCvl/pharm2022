@@ -12,7 +12,7 @@ public class PDFcreator {
     public PDFcreator() {
     }
     void creePDF_Client() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/java";
+        String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
         Connection con = null;
         Statement listeClient = null;
 
@@ -20,7 +20,7 @@ public class PDFcreator {
         try {
 
 
-            con = DriverManager.getConnection(url, "root", "nathancvl");
+            con = DriverManager.getConnection(url, "admin", "nathancvl");
             int resultats;
             System.out.println("Connexion réussi");
             String requeteClient = "select * from Client";
@@ -33,7 +33,7 @@ public class PDFcreator {
             paragraph.setAlignment(1);
             paragraph.setSpacingAfter(10);
             my_pdf_report.add(paragraph);
-            PdfPTable my_report_table = new PdfPTable(4);
+            PdfPTable my_report_table = new PdfPTable(5);
             my_report_table.setSpacingAfter(30);
             //create a cell object
             PdfPCell table_cell;
@@ -41,31 +41,38 @@ public class PDFcreator {
                table_cell = new PdfPCell(new Phrase("idClient"));
                 table_cell.setBackgroundColor(new BaseColor(0, 173, 239));
                 my_report_table.addCell(table_cell);
-                table_cell = new PdfPCell(new Phrase("nomClient"));
+                table_cell = new PdfPCell(new Phrase("nom"));
                 table_cell.setBackgroundColor(new BaseColor(0, 173, 239));
                 my_report_table.addCell(table_cell);
-                table_cell = new PdfPCell(new Phrase("prenomClient"));
+                table_cell = new PdfPCell(new Phrase("prenom"));
                 table_cell.setBackgroundColor(new BaseColor(0, 173, 239));
                 my_report_table.addCell(table_cell);
                 table_cell = new PdfPCell(new Phrase("adresse"));
                 table_cell.setBackgroundColor(new BaseColor(0, 173, 239));
                 my_report_table.addCell(table_cell);
+                table_cell = new PdfPCell(new Phrase("tel"));
+                table_cell.setBackgroundColor(new BaseColor(0, 173, 239));
+                my_report_table.addCell(table_cell);
 
 
                 while (rs.next()) {
-                    String idClient = rs.getString("idClient");
+                    String idClient = rs.getString("id");
                     table_cell = new PdfPCell(new Phrase(idClient));
                     my_report_table.addCell(table_cell);
-                    String nomClient = rs.getString("NomClient");
+                    String nomClient = rs.getString("nom");
                     table_cell = new PdfPCell(new Phrase(nomClient));
                     my_report_table.addCell(table_cell);
-                    String prenomClient = rs.getString("PrenomClient");
+                    String prenomClient = rs.getString("prenom");
                     table_cell = new PdfPCell(new Phrase(prenomClient));
                     my_report_table.addCell(table_cell);
                     String adresse = rs.getString("adresse");
                     table_cell = new PdfPCell(new Phrase(adresse));
                     my_report_table.addCell(table_cell);
+                    String tel = rs.getString("tel");
+                    table_cell = new PdfPCell(new Phrase(tel));
+                    my_report_table.addCell(table_cell);
                 }
+
                 /* Attach report table to PDF */
                 my_pdf_report.add(my_report_table);
                 my_pdf_report.close();
@@ -83,7 +90,7 @@ public class PDFcreator {
         }
     }
     void creePDF_Medicament() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/java";
+        String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
         Connection con = null;
         Statement listeMedicament = null;
 
@@ -91,10 +98,10 @@ public class PDFcreator {
         try {
 
 
-            con = DriverManager.getConnection(url, "root", "nathancvl");
+            con = DriverManager.getConnection(url, "admin", "nathancvl");
             int resultats;
             System.out.println("Connexion réussi");
-            String requeteClient = "select * from medicament";
+            String requeteClient = "select * from Medicament";
             listeMedicament= con.createStatement();
             Document my_pdf_report = new Document(PageSize.A4);
             PdfWriter.getInstance( my_pdf_report, new FileOutputStream("listeMédicament.pdf"));
@@ -130,23 +137,23 @@ public class PDFcreator {
                 my_report_table.addCell(table_cell);
 
                 while (rs.next()) {
-                    String mID = rs.getString("mID");
+                    String mID = String.valueOf(rs.getInt("mID"));
                     table_cell = new PdfPCell(new Phrase(mID));
                     my_report_table.addCell(table_cell);
-                    String nomMed = rs.getString("nomMed");
+                    String nomMed = rs.getString("nom");
                     table_cell = new PdfPCell(new Phrase(nomMed));
                     my_report_table.addCell(table_cell);
-                    String marqueMed = rs.getString("marqueMed");
+                    String marqueMed = rs.getString("marque");
                     table_cell = new PdfPCell(new Phrase(marqueMed));
                     my_report_table.addCell(table_cell);
-                    String quantiteMed = rs.getString("quantiteMed");
+                    String quantiteMed = rs.getString("quantite");
                     table_cell = new PdfPCell(new Phrase(quantiteMed));
                     my_report_table.addCell(table_cell);
-                    String prixMed = rs.getString("prixMed");
+                    String prixMed = String.valueOf(rs.getInt("prix"));
                     table_cell = new PdfPCell(new Phrase(prixMed));
                     my_report_table.addCell(table_cell);
-                    String dateMed = rs.getString("dateMed");
-                    table_cell = new PdfPCell(new Phrase(dateMed));
+                    Date dateMed = rs.getDate("dateExp");
+                    table_cell = new PdfPCell(new Phrase(String.valueOf(dateMed)));
                     my_report_table.addCell(table_cell);
 
 
@@ -167,6 +174,77 @@ public class PDFcreator {
             e.printStackTrace();
         }
     }
+    void creePDF_Vente() throws SQLException {
+        String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
+        Connection con = null;
+        Statement listeMedicament = null;
 
+
+        try {
+
+
+            con = DriverManager.getConnection(url, "admin", "nathancvl");
+            int resultats;
+            System.out.println("Connexion réussi");
+            String requeteClient = "select * from Vente";
+            listeMedicament= con.createStatement();
+            Document my_pdf_report = new Document(PageSize.A4);
+            PdfWriter.getInstance( my_pdf_report, new FileOutputStream("listeVente.pdf"));
+            my_pdf_report.open();
+            //we have four columns in our table
+            Paragraph paragraph = new Paragraph("Liste Vente");
+            paragraph.setAlignment(1);
+            paragraph.setSpacingAfter(10);
+            my_pdf_report.add(paragraph);
+            PdfPTable my_report_table = new PdfPTable(4);
+            my_report_table.setSpacingAfter(50);
+
+            //create a cell object
+            PdfPCell table_cell;
+            try (ResultSet rs = listeMedicament.executeQuery(requeteClient)) {
+                table_cell = new PdfPCell(new Phrase("ID Vente"));
+                table_cell.setBackgroundColor(new BaseColor(0, 173, 239));
+                my_report_table.addCell(table_cell);
+                table_cell = new PdfPCell(new Phrase("ID Client"));
+                table_cell.setBackgroundColor(new BaseColor(0, 173, 239));
+                my_report_table.addCell(table_cell);
+                table_cell = new PdfPCell(new Phrase("date"));
+                table_cell.setBackgroundColor(new BaseColor(0, 173, 239));
+                my_report_table.addCell(table_cell);
+                table_cell = new PdfPCell(new Phrase("montant €"));
+                table_cell.setBackgroundColor(new BaseColor(0, 173, 239));
+                my_report_table.addCell(table_cell);
+
+                while (rs.next()) {
+                    String mID = String.valueOf(rs.getInt("idVente"));
+                    table_cell = new PdfPCell(new Phrase(mID));
+                    my_report_table.addCell(table_cell);
+                    String nomMed = rs.getString("client_id");
+                    table_cell = new PdfPCell(new Phrase(nomMed));
+                    my_report_table.addCell(table_cell);
+                    String marqueMed = rs.getString("date");
+                    table_cell = new PdfPCell(new Phrase(marqueMed));
+                    my_report_table.addCell(table_cell);
+                    String quantiteMed = rs.getString("montant");
+
+
+
+                }
+                /* Attach report table to PDF */
+                my_pdf_report.add(my_report_table);
+                my_pdf_report.close();
+
+                /* Close all DB related objects */
+                rs.close();
+                listeMedicament.close();
+                con.close();
+            } catch (DocumentException e) {
+                e.printStackTrace();
+            }
+
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

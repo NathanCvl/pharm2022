@@ -1,6 +1,6 @@
 package com.proj.pharm2022;
 
-import com.proj.pharm2022.personne.Compte;
+import com.proj.pharm2022.application.Compte;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,14 +32,14 @@ public class InscriptionControl {
             Compte nouveau = new Compte(identfiant, motDePasse);
             nouveau.creeCompteBDD();
             Stage stage = (Stage)  confirmer.getScene().getWindow();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Connexion.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/Connexion.fxml")));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }
         else {
             Stage stage = (Stage)  annuler.getScene().getWindow();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Connexion.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/Connexion.fxml")));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

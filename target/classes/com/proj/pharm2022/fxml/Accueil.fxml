@@ -4,12 +4,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -19,10 +19,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../accueilStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj.pharm2022.AccueilControl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="786.0" prefWidth="1456.0" stylesheets="@../accueilStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj.pharm2022.AccueilControl">
     <stylesheets>
         <URL value="@../accueilStyle.css" />
     </stylesheets>
@@ -30,8 +31,8 @@
         <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <center>
                 <AnchorPane focusTraversable="true" minHeight="0.0" minWidth="0.0" prefHeight="1078.0" prefWidth="1241.0" BorderPane.alignment="CENTER">
-                    <TabPane tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        <Tab text="Clients">
+                    <TabPane fx:id="panePrincipal" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Tab fx:id="tabClient" text="Clients">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1019.0" prefWidth="1574.0">
                                     <children>
@@ -268,7 +269,7 @@
                                 </AnchorPane>
                             </content>
                         </Tab>
-                        <Tab text="Médicament">
+                        <Tab fx:id="tabMed" text="Médicament">
                             <content>
                                 <AnchorPane>
                                     <children>
@@ -292,7 +293,7 @@
                                                                         </TableView>
                                                                         <VBox fillWidth="false" prefHeight="1000.0" prefWidth="230.0">
                                                                             <children>
-                                                                                <Button mnemonicParsing="false" prefWidth="100.0" text="Ajouter">
+                                                                                <Button mnemonicParsing="false" onAction="#btnAjouterMedicament" prefWidth="100.0" text="Ajouter">
                                                                                     <VBox.margin>
                                                                                         <Insets top="10.0" />
                                                                                     </VBox.margin>
@@ -312,7 +313,7 @@
                                                                                         <Insets top="10.0" />
                                                                                     </VBox.margin>
                                                                                 </Button>
-                                                                                <Button mnemonicParsing="false" onAction="#imprimerListeMed" prefWidth="100.0" text="Imprimer">
+                                                                                <Button mnemonicParsing="false" onAction="#imprimerListeMedicament" prefWidth="100.0" text="Imprimer">
                                                                                     <VBox.margin>
                                                                                         <Insets top="10.0" />
                                                                                     </VBox.margin>
@@ -523,30 +524,176 @@
                                 </AnchorPane>
                             </content>
                         </Tab>
-                        <Tab text="Vente">
+                        <Tab fx:id="tabVente" text="Vente">
                             <content>
                                 <AnchorPane>
                                     <children>
-                                        <TabPane layoutY="-2.0" prefHeight="955.0" prefWidth="1281.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <TabPane fx:id="paraVente" layoutY="-2.0" prefHeight="955.0" prefWidth="1281.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <tabs>
+                                                <Tab fx:id="ajouterVente" text="Ajouter">
+                                                    <content>
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="242.0" prefWidth="434.0">
+                                             <children>
+                                                <HBox prefHeight="332.0" prefWidth="1376.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0">
+                                                   <children>
+                                                      <AnchorPane prefHeight="496.0" prefWidth="606.0">
+                                                         <children>
+                                                            <Pane fx:id="paneChoixClient" prefHeight="332.0" prefWidth="536.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <TableView fx:id="tableClient1" layoutX="4.0" layoutY="-1.0" prefHeight="331.0" prefWidth="436.0">
+                                                                     <columns>
+                                                                        <TableColumn fx:id="idClient1" prefWidth="100.18588781356812" text="ID. Client" />
+                                                                        <TableColumn fx:id="nomClient1" prefWidth="129.32376098632812" text="Nom" />
+                                                                        <TableColumn fx:id="prenomClient1" minWidth="0.0" prefWidth="97.17623901367188" text="Prénom" />
+                                                                        <TableColumn fx:id="telClient1" prefWidth="139.8488311767578" text="Tel" />
+                                                                        <TableColumn fx:id="adresseClient1" prefWidth="338.5509948730469" text="Adresse" />
+                                                                     </columns>
+                                                                     <columnResizePolicy>
+                                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                                     </columnResizePolicy>
+                                                                  </TableView>
+                                                                  <Button layoutX="446.0" layoutY="46.0" mnemonicParsing="false" onAction="#choixClientVente" text="Choisir Client" />
+                                                               </children>
+                                                            </Pane>
+                                                            <Pane fx:id="paneAfficheClient" prefHeight="332.0" prefWidth="301.0" visible="false">
+                                                               <children>
+                                                                  <VBox fillWidth="false" prefHeight="361.0" prefWidth="370.0">
+                                                                     <children>
+                                                                        <Label prefHeight="17.0" prefWidth="70.0" text="ID. Client">
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" left="20.0" />
+                                                                           </VBox.margin>
+                                                                        </Label>
+                                                                        <TextField fx:id="idClientVente" editable="false" focusTraversable="false" pickOnBounds="false" visible="false">
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" left="20.0" />
+                                                                           </VBox.margin>
+                                                                           <cursor>
+                                                                              <Cursor fx:constant="DEFAULT" />
+                                                                           </cursor>
+                                                                        </TextField>
+                                                                        <Label text="Nom">
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" left="20.0" />
+                                                                           </VBox.margin>
+                                                                        </Label>
+                                                                        <TextField fx:id="nomClientVente" editable="false">
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" left="20.0" />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <Label text="Prénom">
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" left="20.0" />
+                                                                           </VBox.margin>
+                                                                        </Label>
+                                                                        <TextField fx:id="prenomClientVente">
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" left="20.0" />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <Label text="Tél.">
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" left="20.0" />
+                                                                           </VBox.margin>
+                                                                        </Label>
+                                                                        <TextField fx:id="telClientVente" editable="false">
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" left="20.0" />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <Label text="Adresse">
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" left="20.0" />
+                                                                           </VBox.margin>
+                                                                        </Label>
+                                                                        <TextField fx:id="adresseClientVente" prefHeight="26.0" prefWidth="232.0">
+                                                                           <VBox.margin>
+                                                                              <Insets bottom="5.0" left="20.0" />
+                                                                           </VBox.margin>
+                                                                        </TextField>
+                                                                        <Button mnemonicParsing="false" onAction="#returnChoixClient" text="Retour">
+                                                                           <VBox.margin>
+                                                                              <Insets left="20.0" top="10.0" />
+                                                                           </VBox.margin>
+                                                                        </Button>
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                            </Pane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                                      <AnchorPane prefHeight="332.0" prefWidth="914.0">
+                                                         <children>
+                                                            <TextField fx:id="mediFiltre" layoutX="540.0" layoutY="17.0" prefHeight="26.0" prefWidth="147.0" promptText="Chercher Médicament" />
+                                                            <TableView fx:id="tableMedicament1" layoutX="112.0" layoutY="28.0" onSort="#getinfoMedicament" prefHeight="322.0" prefWidth="535.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="0.0">
+                                                               <columns>
+                                                                  <TableColumn fx:id="idMedicamentTab1" prefWidth="61.01654052734375" text="ID.  Médicament" />
+                                                                  <TableColumn fx:id="nomMedicamentTab1" prefWidth="138.09808349609375" text="Nom médicament" />
+                                                                  <TableColumn fx:id="marqueMedicamentTab1" minWidth="0.0" prefWidth="45.40179443359375" text="Marque" />
+                                                                  <TableColumn fx:id="prixMedicamentTab1" prefWidth="74.0963134765625" text="Prix" />
+                                                                  <TableColumn fx:id="dateMedTab1" prefWidth="116.852783203125" text="Date d'éxpiration" />
+                                                                  <TableColumn fx:id="stockMedicamentTab1" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="97.0" text="Quantité stock" />
+                                                               </columns>
+                                                            </TableView>
+                                                            <Button fx:id="validerChoixMed" layoutX="561.0" layoutY="45.0" mnemonicParsing="false" onAction="#medicamentVersPanier" text="Choisir Médicament" AnchorPane.bottomAnchor="261.0" AnchorPane.topAnchor="50.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </HBox>
+                                                <Separator layoutX="1.0" layoutY="334.0" prefHeight="12.0" prefWidth="1243.0" />
+                                                <TableView fx:id="tablePanier" layoutX="136.0" layoutY="395.0" prefHeight="262.0" prefWidth="701.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="395.0">
+                                                  <columns>
+                                                      <TableColumn fx:id="idArticle" prefWidth="149.20237731933594" text="id. Article" />
+                                                    <TableColumn fx:id="nomArticle" prefWidth="149.20237731933594" text="Nom Article" />
+                                                    <TableColumn fx:id="marqueArticle" prefWidth="93.297607421875" text="Marque Article" />
+                                                      <TableColumn fx:id="prixArticle" prefWidth="149.20237731933594" text="Prix articile" />
+                                                      <TableColumn fx:id="quantiteArticle" prefWidth="149.20237731933594" text="Quantité article" />
+                                                  </columns>
+                                                </TableView>
+                                                <Label layoutX="12.0" layoutY="360.0" prefHeight="32.0" prefWidth="126.0" style="-fx-border-color: red; -fx-border-radius: 20px; -fx-alignment: center;" text="Panier" AnchorPane.leftAnchor="0.0">
+                                                   <font>
+                                                      <Font size="26.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="893.0" layoutY="425.0" prefHeight="29.0" prefWidth="83.0" text="Total = ">
+                                                   <font>
+                                                      <Font name="Noteworthy Light" size="20.0" />
+                                                   </font></Label>
+                                                <Label fx:id="prixTotal" layoutX="987.0" layoutY="429.0" prefHeight="22.0" prefWidth="118.0" text="0">
+                                                   <font>
+                                                      <Font name="Noteworthy Light" size="20.0" />
+                                                   </font></Label>
+                                                <Label layoutX="1023.0" layoutY="431.0" text="Euro(s)">
+                                                   <font>
+                                                      <Font name="Noteworthy Light" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button layoutX="893.0" layoutY="514.0" mnemonicParsing="false" onAction="#annulerPanier" text="Annuler panier" />
+                                                <Button layoutX="893.0" layoutY="470.0" mnemonicParsing="false" onAction="#finVente" prefHeight="26.0" prefWidth="95.0" text="Valider panier" />
+                                                <Button layoutX="709.0" layoutY="427.0" mnemonicParsing="false" onAction="#supprimerArticle" text="Supprimer Article" />
+                                             </children>
+                                          </AnchorPane>
+                                                    </content>
+                                                </Tab>
                                                 <Tab text="Liste">
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="828.0" prefWidth="1281.0">
                                                             <children>
                                                                 <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                     <children>
-                                                                        <TableView onSort="#getinfoMedicament" prefHeight="800.0" prefWidth="1000.0">
+                                                                        <TableView fx:id="tableVente" onSort="#getinfoMedicament" prefHeight="580.0" prefWidth="1082.0">
                                                                             <columns>
-                                                                                <TableColumn prefWidth="100.18588781356812" text="ID.  Vente" />
-                                                                                <TableColumn prefWidth="127.31410217285156" text="Client" />
-                                                                                <TableColumn minWidth="0.0" prefWidth="98.62928771972656" text="Date" />
-                                                                                <TableColumn prefWidth="186.56365966796875" text="Montant vente" />
-                                                                                <TableColumn prefWidth="139.8488311767578" text="Vendeur" />
+                                                                                <TableColumn fx:id="idVente" prefWidth="100.18588781356812" text="ID.  Vente" />
+                                                                                <TableColumn fx:id="clientVente" prefWidth="127.31410217285156" text="Client" />
+                                                                                <TableColumn fx:id="dateVente" minWidth="0.0" prefWidth="98.62928771972656" text="Date" />
+                                                                                <TableColumn fx:id="montantVente" prefWidth="186.56365966796875" text="Montant vente" />
                                                                             </columns>
                                                                         </TableView>
                                                                         <VBox fillWidth="false" prefHeight="1000.0" prefWidth="230.0">
                                                                             <children>
-                                                                                <Button mnemonicParsing="false" prefWidth="100.0" text="Ajouter">
+                                                                                <Button mnemonicParsing="false" onAction="#btnAjouterVente" prefWidth="100.0" text="Ajouter">
                                                                                     <VBox.margin>
                                                                                         <Insets top="10.0" />
                                                                                     </VBox.margin>
@@ -556,17 +703,12 @@
                                                                                         <Insets top="10.0" />
                                                                                     </VBox.margin>
                                                                                 </Button>
-                                                                                <Button mnemonicParsing="false" onAction="#supprimerMedicament" prefWidth="100.0" text="Supprimer">
+                                                                                <Button mnemonicParsing="false" onAction="#supprimerVente" prefWidth="100.0" text="Supprimer">
                                                                                     <VBox.margin>
                                                                                         <Insets top="10.0" />
                                                                                     </VBox.margin>
                                                                                 </Button>
-                                                                                <Button mnemonicParsing="false" onAction="#getinfoMedicament" prefWidth="100.0" text="Modifier">
-                                                                                    <VBox.margin>
-                                                                                        <Insets top="10.0" />
-                                                                                    </VBox.margin>
-                                                                                </Button>
-                                                                                <Button mnemonicParsing="false" onAction="#imprimerListeMed" prefWidth="100.0" text="Imprimer">
+                                                                                <Button mnemonicParsing="false" onAction="#imprimerListeVente" prefWidth="100.0" text="Imprimer">
                                                                                     <VBox.margin>
                                                                                         <Insets top="10.0" />
                                                                                     </VBox.margin>
@@ -583,21 +725,6 @@
                                                                 </HBox>
                                                             </children>
                                                         </AnchorPane>
-                                                    </content>
-                                                </Tab>
-                                                <Tab text="Modifier">
-                                                    <content>
-                                                        <AnchorPane />
-                                                    </content>
-                                                </Tab>
-                                                <Tab text="Ajouter">
-                                                    <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                             <children>
-                                                <ComboBox fx:id="comboBox" onAction="#afficherBox" editable="true" layoutX="50.0" layoutY="53.0" prefWidth="150.0" promptText="Client" visibleRowCount="20">
-
-                                                </ComboBox>
-                                             </children></AnchorPane>
                                                     </content>
                                                 </Tab>
                                             </tabs>
@@ -633,11 +760,20 @@
             <left>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1078.0" prefWidth="215.0" BorderPane.alignment="CENTER">
                     <children>
-                        <VBox layoutX="55.0" layoutY="96.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox layoutX="55.0" layoutY="96.0" prefHeight="200.0" prefWidth="100.0" spacing="30.0" style="-fx-border-radius: 30px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <Button mnemonicParsing="false" text="Button" />
-                                <Button cancelButton="true" mnemonicParsing="false" text="Button" />
-                                <Button defaultButton="true" mnemonicParsing="false" text="Button" />
+                                <Button mnemonicParsing="false" onAction="#btnAjouterClient" prefHeight="80.0" prefWidth="280.0" text="Ajouter Client">
+                           <VBox.margin>
+                              <Insets left="30.0" right="30.0" top="100.0" />
+                           </VBox.margin></Button>
+                                <Button cancelButton="true" mnemonicParsing="false" onAction="#btnAjouterMedicament" prefHeight="80.0" prefWidth="280.0" text="Ajouter Médicament">
+                           <VBox.margin>
+                              <Insets left="30.0" right="30.0" top="100.0" />
+                           </VBox.margin></Button>
+                                <Button mnemonicParsing="false" onAction="#btnAjouterVente" prefHeight="80.0" prefWidth="165.0" style="-fx-border-radius: 40px;" text="Vendre Médicament">
+                           <VBox.margin>
+                              <Insets left="30.0" right="30.0" top="100.0" />
+                           </VBox.margin></Button>
                             </children>
                         </VBox>
                     </children>

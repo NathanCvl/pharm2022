@@ -1,4 +1,12 @@
-.root{
-    -fx-background-image:url('green.jpeg');
-    -fx-background-size: cover;
+.button{
+    -fx-background-color: rgba(10, 110, 241, 0.39);
+
+    -fx-background-radius: 40px;
+}
+.button:hover{
+    -fx-background-color: rgba(68, 179, 232, 0.39);
+}
+
+.label{
+    -fx-font-family:"MuktaMahee Regular ;
 }

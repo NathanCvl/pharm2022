@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="748278f5-f828-457b-823d-6788ea800b31" name="Projet2022@localhost Mapping">
+      <data-sources db="76f8025b-f2f2-4f39-b002-a49b400426a6" />
+      <scope>
+        <node kind="schema" qname="Projet2022" />
+      </scope>
+    </mapping>
+    <mapping uuid="36da2881-2945-4722-ad5a-0b3a395bde58" name="@localhost Mapping">
+      <data-sources db="a3edda4f-4b4b-4b51-bfd1-3120113ca0bd" />
+      <scope>
+        <node negative="1">
+          <node kind="database" negative="1">
+            <node kind="schema" negative="1" />
+          </node>
+          <node kind="schema" qname="mysql" />
+        </node>
+      </scope>
+    </mapping>
+  </component>
+</project>

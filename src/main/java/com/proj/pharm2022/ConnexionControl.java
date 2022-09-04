@@ -1,8 +1,6 @@
 package com.proj.pharm2022;
 
-import org.kordamp.ikonli.Ikon;
-import com.proj.pharm2022.personne.Compte;
-import com.proj.pharm2022.personne.ListeCompte;
+import com.proj.pharm2022.application.Compte;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +13,8 @@ import java.sql.*;
 import java.util.Objects;
 
 public class ConnexionControl {
+    @FXML
+    private ProgressIndicator progressIndicator;
     @FXML
     private TextField id;
     @FXML
@@ -33,7 +33,9 @@ public class ConnexionControl {
         if(event.getSource()==btn1) {
             identifiant=id.getText();
             password=mdp.getText();
+
             if ( verifCompteBDD() ) {
+
                 stage = (Stage) btn1.getScene().getWindow();
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/Accueil.fxml")));
                 Scene scene = new Scene(root);
@@ -59,17 +61,17 @@ public class ConnexionControl {
 
 
     public boolean verifCompteBDD() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/java";
+        String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
         Connection con = null;
 
 
         try {
 
 
-            con = DriverManager.getConnection(url, "root", "nathancvl");
+            con = DriverManager.getConnection(url, "admin", "nathancvl");
             try {
                 Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT identifiantCompte,mdpCompte FROM Compte");
+                ResultSet rs = stmt.executeQuery("SELECT identifiant,motDePasse FROM Compte");
 
                 while (rs.next()){
                     if ( rs.getString(1).equals(identifiant) && rs.getString(2).equals(password) ){
@@ -89,7 +91,6 @@ public class ConnexionControl {
 
         void verifCompte(){
         Compte compte = new Compte(identifiant,password);
-        ListeCompte listeCompte;
     }
     public TextField getId() {
         return id;
