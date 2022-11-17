@@ -87,7 +87,7 @@ public class Medicament {
     }
 
     public void ajoutMedicamentBDD() throws SQLException {
-        String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
+        String url = "jdbc:mysql://localhost:3306/java";
         Connection con = null;
         Statement stmt = null;
 
@@ -95,7 +95,7 @@ public class Medicament {
         try {
 
 
-            con = DriverManager.getConnection(url, "admin", "nathancvl");
+            con = DriverManager.getConnection(url, "root", "NathanCvl");
             int resultats;
             System.out.println("Connexion réussi");
             PreparedStatement preparedStatement = con.prepareStatement("insert into Medicament values(mId,?,?,?,?,?)");
@@ -117,7 +117,7 @@ public class Medicament {
     }
 
     public void supprimerMedicamentBDD() throws SQLException {
-        String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
+        String url = "jdbc:mysql://localhost:3306/java";
         Connection con = null;
         Statement stmt = null;
 
@@ -125,7 +125,7 @@ public class Medicament {
         try {
 
 
-            con = DriverManager.getConnection(url, "admin", "nathancvl");
+            con = DriverManager.getConnection(url, "root", "NathanCvl");
             int resultats;
             PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM Medicament  where mId=?");
 
@@ -144,7 +144,7 @@ public class Medicament {
     }
 
     public void modifierMedicamenttBDD() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/Projet2022";
+        String url = "jdbc:mysql://localhost:3306/java";
         Connection con = null;
         Statement stmt = null;
 
@@ -152,7 +152,7 @@ public class Medicament {
         try {
 
 
-            con = DriverManager.getConnection(url, "admin", "nathancvl");
+            con = DriverManager.getConnection(url, "root", "NathanCvl");
             int resultats;
             System.out.println("Connexion réussi");
             PreparedStatement preparedStatement = con.prepareStatement("update Medicament SET nom=?,marque=?,quantite=? ,prix=?,dateExp =? where mId=?");

@@ -1,29 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="786.0" prefWidth="1456.0" stylesheets="@../accueilStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj.pharm2022.AccueilControl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="786.0" prefWidth="1456.0" stylesheets="@../accueilStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proj.pharm2022.AccueilControl">
     <stylesheets>
         <URL value="@../accueilStyle.css" />
     </stylesheets>
@@ -44,7 +29,7 @@
                                                             <children>
                                                                 <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                                     <children>
-                                                                        <TableView fx:id="tableClient" prefHeight="800.0" prefWidth="1000.0">
+                                                                        <TableView fx:id="tableClient" prefHeight="696.0" prefWidth="1059.0">
                                                                             <columns>
                                                                                 <TableColumn fx:id="idClient" prefWidth="100.18588781356812" text="ID. Client" />
                                                                                 <TableColumn fx:id="nomClient" prefWidth="129.32376098632812" text="Nom" />
@@ -762,6 +747,7 @@
                     <children>
                         <VBox layoutX="55.0" layoutY="96.0" prefHeight="200.0" prefWidth="100.0" spacing="30.0" style="-fx-border-radius: 30px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
+                        <Button mnemonicParsing="false" text="Button" />
                                 <Button mnemonicParsing="false" onAction="#btnAjouterClient" prefHeight="80.0" prefWidth="280.0" text="Ajouter Client">
                            <VBox.margin>
                               <Insets left="30.0" right="30.0" top="100.0" />

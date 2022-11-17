@@ -67,7 +67,7 @@ public class Compte{
 
 
     public void creeCompteBDD() throws SQLException {
-        String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
+        String url = "jdbc:mysql://localhost:3306/java";
         Connection con = null;
         Statement stmt = null;
 
@@ -75,10 +75,10 @@ public class Compte{
         try {
 
 
-            con = DriverManager.getConnection(url, "admin", "nathancvl");
+            con = DriverManager.getConnection(url, "root", "NathanCvl");
             int resultats;
             System.out.println("Connexion réussi");
-            PreparedStatement preparedStatement = con.prepareStatement("insert into Compte values(id,?,?,null,null,null)");
+            PreparedStatement preparedStatement = con.prepareStatement("insert into Compte values(idCompte,?,?)");
             preparedStatement.setString(1,identifiant);
             preparedStatement.setString(2, motDePasse);
             try {

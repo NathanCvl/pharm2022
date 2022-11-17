@@ -57,7 +57,7 @@ public class Vente implements Serializable {
     }
 
     public void supprimerVenteBDD() throws SQLException {
-        String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
+        String url = "jdbc:mysql://localhost:3306/java";
         Connection con = null;
         Statement stmt = null;
 
@@ -65,7 +65,7 @@ public class Vente implements Serializable {
         try {
 
 
-            con = DriverManager.getConnection(url, "admin", "nathancvl");
+            con = DriverManager.getConnection(url, "admin", "NathanCvl");
             int resultats;
             PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM Vente where idVente=?");
 
@@ -84,14 +84,14 @@ public class Vente implements Serializable {
     }
 
     public void finVente(int montant){
-            String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
+        String url = "jdbc:mysql://localhost:3306/java";
             Connection con;
 
 
         try {
 
 
-                con = DriverManager.getConnection(url, "admin", "nathancvl");
+                con = DriverManager.getConnection(url, "root", "NathanCvl");
                 System.out.println("Connexion réussi");
                 PreparedStatement preparedStatement = con.prepareStatement("insert into Vente values(idVente,?,?,?)");
                 preparedStatement.setInt(1,idClient);

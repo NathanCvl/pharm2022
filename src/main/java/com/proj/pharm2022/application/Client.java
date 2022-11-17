@@ -28,7 +28,7 @@ public class Client  {
     }
 
     public void creeClientBDD() throws SQLException {
-        String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
+        String url = "jdbc:mysql://localhost:3306/java";
         Connection con = null;
         Statement stmt = null;
 
@@ -36,10 +36,10 @@ public class Client  {
         try {
 
 
-            con = DriverManager.getConnection(url, "admin", "nathancvl");
+            con = DriverManager.getConnection(url, "root", "NathanCvl");
             int resultats;
             System.out.println("Connexion réussi");
-            PreparedStatement preparedStatement = con.prepareStatement("insert into Client values(id,?,?,?,?)");
+            PreparedStatement preparedStatement = con.prepareStatement("insert into Client values(idClient,?,?,?,?)");
             preparedStatement.setString(1,nom);
             preparedStatement.setString(2, prenom);
             preparedStatement.setString(3,tel);
@@ -55,7 +55,7 @@ public class Client  {
         }
     }
     public void modifierClientBDD() throws SQLException {
-        String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/";
+        String url = "jdbc:mysql://localhost:3306/java";
         Connection con = null;
         Statement stmt = null;
 
@@ -63,7 +63,7 @@ public class Client  {
         try {
 
 
-            con = DriverManager.getConnection(url, "admin", "nathancvl");
+            con = DriverManager.getConnection(url, "root", "NathanCvl");
             int resultats;
             System.out.println("Connexion réussi");
             PreparedStatement preparedStatement = con.prepareStatement("update Client SET nom=?,prenom=?,tel=?,adresse=? where id=?");
@@ -93,9 +93,9 @@ public class Client  {
         try {
 
 
-            con = DriverManager.getConnection(url, "root", "nathancvl");
+            con = DriverManager.getConnection(url, "root", "NathanCvl");
             int resultats;
-            PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM Client where id=?");
+            PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM Client where idClient=?");
 
             preparedStatement.setInt(1, id);
             try {

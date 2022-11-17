@@ -431,7 +431,7 @@ private TabPane panePrincipal;
         alert.setHeaderText("Souhaitez-vous vraiment modifier ce médicament ?");
         Optional<ButtonType> result = alert.showAndWait();
         if ( result.isPresent() ) {
-            if ( result.get() == ButtonType.OK )
+            if ( result.get() == ButtonType.OK ) {
                 idMedicamentMod.setEditable(false);
                 nomMedicament = nomMedicamentMod.getText();
                 marqueMedicament = marqueMedicamentMod.getText();
@@ -440,6 +440,7 @@ private TabPane panePrincipal;
                 dateExpMedicament = (dateMedicamentMod.getValue());
                 Medicament medicament = new Medicament(Integer.parseInt(idMedicamentMod.getText()), nomMedicament, marqueMedicament, quantiteMedicament, prixMedicament, Date.valueOf(dateExpMedicament));
                 medicament.modifierMedicamenttBDD();
+            }
         }
         refreshTable();
 
@@ -581,10 +582,10 @@ private TabPane panePrincipal;
         ObservableList<Medicament> obListeMedicament = FXCollections.observableArrayList();
         ObservableList<Vente> obListeVente = FXCollections.observableArrayList();
 
-        String url2 = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
+        String url2 = "jdbc:mysql://localhost:3306/java";
         Connection con;
         try {
-            con = DriverManager.getConnection(url2, "admin", "nathancvl");
+            con = DriverManager.getConnection(url2, "root", "NathanCvl");
             String requeteClient = "select * from Client";
             String requeteMedicament = "select * from Medicament";
             String requeteVente = "select * from Vente";
@@ -593,7 +594,7 @@ private TabPane panePrincipal;
             Statement listeVente = con.createStatement();
             try (ResultSet rs = listeClient.executeQuery(requeteClient) ) {
                 while (rs.next()) {
-                    obListeClient.add(new Client(rs.getInt("id"),rs.getString("nom"), rs.getString("prenom"), rs.getString("tel"), rs.getString("adresse")));
+                    obListeClient.add(new Client(rs.getInt("idClient"),rs.getString("nom"), rs.getString("prenom"), rs.getString("tel"), rs.getString("adresse")));
                 }
 
             }
@@ -725,7 +726,7 @@ private TabPane panePrincipal;
         }
         int calculPrix() {
             int total = 0;
-            String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
+            String url = "jdbc:mysql://localhost:3306/java";
             for (int i = 0; i < tablePanier.getItems().size(); i++) {
                 total+=tablePanier.getItems().get(i).getPrix()*tablePanier.getItems().get(i).getQuantite();
             }
@@ -765,9 +766,9 @@ private TabPane panePrincipal;
                 mediFiltre.setText("");
                 refreshTable();
                 ObservableList<Medicament> obListeMedicament = FXCollections.observableArrayList();
-                String url2 = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
+                String url2 = "jdbc:mysql://localhost:3306/java";
                 try {
-                    Connection con = DriverManager.getConnection(url2, "admin", "nathancvl");
+                    Connection con = DriverManager.getConnection(url2, "root", "NathanCvl");
                     String requeteMedicament = "select * from Medicament";
                     Statement listeMedicament = con.createStatement();
 

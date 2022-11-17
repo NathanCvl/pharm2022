@@ -12,7 +12,7 @@ public class PDFcreator {
     public PDFcreator() {
     }
     void creePDF_Client() throws SQLException {
-        String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
+        String url = "jdbc:mysql://localhost:3306/java";
         Connection con = null;
         Statement listeClient = null;
 
@@ -20,7 +20,7 @@ public class PDFcreator {
         try {
 
 
-            con = DriverManager.getConnection(url, "admin", "nathancvl");
+            con = DriverManager.getConnection(url, "root", "NathanCvl");
             int resultats;
             System.out.println("Connexion réussi");
             String requeteClient = "select * from Client";
@@ -56,7 +56,7 @@ public class PDFcreator {
 
 
                 while (rs.next()) {
-                    String idClient = rs.getString("id");
+                    String idClient = rs.getString("idClient");
                     table_cell = new PdfPCell(new Phrase(idClient));
                     my_report_table.addCell(table_cell);
                     String nomClient = rs.getString("nom");
@@ -90,7 +90,7 @@ public class PDFcreator {
         }
     }
     void creePDF_Medicament() throws SQLException {
-        String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
+        String url = "jdbc:mysql://localhost:3306/java";
         Connection con = null;
         Statement listeMedicament = null;
 
@@ -98,7 +98,7 @@ public class PDFcreator {
         try {
 
 
-            con = DriverManager.getConnection(url, "admin", "nathancvl");
+            con = DriverManager.getConnection(url, "root", "NathanCvl");
             int resultats;
             System.out.println("Connexion réussi");
             String requeteClient = "select * from Medicament";
@@ -175,7 +175,7 @@ public class PDFcreator {
         }
     }
     void creePDF_Vente() throws SQLException {
-        String url = "jdbc:mysql://pharma.caem2tgou5ub.eu-west-3.rds.amazonaws.com/Projet2022";
+        String url = "jdbc:mysql://localhost:3306/java";
         Connection con = null;
         Statement listeMedicament = null;
 
@@ -183,7 +183,7 @@ public class PDFcreator {
         try {
 
 
-            con = DriverManager.getConnection(url, "admin", "nathancvl");
+            con = DriverManager.getConnection(url, "root", "NathanCvl");
             int resultats;
             System.out.println("Connexion réussi");
             String requeteClient = "select * from Vente";
